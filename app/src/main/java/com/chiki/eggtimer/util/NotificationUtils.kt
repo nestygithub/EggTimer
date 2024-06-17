@@ -10,9 +10,9 @@ import com.chiki.eggtimer.MainActivity
 import com.chiki.eggtimer.R
 import com.chiki.eggtimer.receiver.SnoozeReceiver
 
-private val NOTIFICATION_ID = 0
-private val REQUEST_CODE = 0
-private val FLAGS = 0
+private const val NOTIFICATION_ID = 0
+private const val REQUEST_CODE = 0
+
 fun NotificationManager.sendNotification(messageBody:String, applicationContext: Context){
 
     val contentIntent = Intent(applicationContext,MainActivity::class.java)
