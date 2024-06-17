@@ -4,7 +4,6 @@ import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.chiki.eggtimer.R
 import com.chiki.eggtimer.util.sendNotification

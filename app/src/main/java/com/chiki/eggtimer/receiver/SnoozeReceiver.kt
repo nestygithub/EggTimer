@@ -19,7 +19,7 @@ class SnoozeReceiver:BroadcastReceiver() {
         val triggerTime = SystemClock.elapsedRealtime() + DateUtils.MINUTE_IN_MILLIS
 
         val notifyIntent = Intent(context, AlarmReceiver::class.java)
-        val notifyPendingIntent = PendingIntent.getBroadcast(context,REQUEST_CODE,notifyIntent,PendingIntent.FLAG_UPDATE_CURRENT)
+        val notifyPendingIntent = PendingIntent.getBroadcast(context,REQUEST_CODE,notifyIntent,PendingIntent.FLAG_IMMUTABLE)
 
         val alarmManager =context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 

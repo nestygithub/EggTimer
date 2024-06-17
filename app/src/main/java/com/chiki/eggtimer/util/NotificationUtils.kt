@@ -16,7 +16,7 @@ private val FLAGS = 0
 fun NotificationManager.sendNotification(messageBody:String, applicationContext: Context){
 
     val contentIntent = Intent(applicationContext,MainActivity::class.java)
-    val contentPendingIntent = PendingIntent.getActivity(applicationContext, NOTIFICATION_ID,contentIntent,PendingIntent.FLAG_UPDATE_CURRENT)
+    val contentPendingIntent = PendingIntent.getActivity(applicationContext, NOTIFICATION_ID,contentIntent,PendingIntent.FLAG_IMMUTABLE)
 
     val eggImage = BitmapFactory.decodeResource(applicationContext.resources,R.drawable.cooked_egg)
     val bigPictureStyle = NotificationCompat.BigPictureStyle()
@@ -24,7 +24,7 @@ fun NotificationManager.sendNotification(messageBody:String, applicationContext:
         .bigLargeIcon(null)
 
     val snoozeIntent = Intent(applicationContext,SnoozeReceiver::class.java)
-    val snoozePendingIntent = PendingIntent.getBroadcast(applicationContext, REQUEST_CODE,snoozeIntent, 0)
+    val snoozePendingIntent = PendingIntent.getBroadcast(applicationContext, REQUEST_CODE,snoozeIntent, PendingIntent.FLAG_IMMUTABLE)
 
     val builder = NotificationCompat.Builder(applicationContext,applicationContext.getString(R.string.egg_notification_channel_id))
         .setStyle(bigPictureStyle)

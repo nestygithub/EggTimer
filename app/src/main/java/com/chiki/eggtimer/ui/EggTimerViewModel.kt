@@ -9,7 +9,6 @@ import android.content.Intent
 import android.os.CountDownTimer
 import android.os.SystemClock
 import androidx.core.app.AlarmManagerCompat
-import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -18,7 +17,6 @@ import androidx.lifecycle.viewModelScope
 import com.chiki.eggtimer.receiver.AlarmReceiver
 import com.chiki.eggtimer.R
 import com.chiki.eggtimer.util.cancelNotifications
-import com.chiki.eggtimer.util.sendNotification
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -53,8 +51,8 @@ class EggTimerViewModel(private val app:Application):AndroidViewModel(app) {
 
     //Lifecycle
     init {
-        _alarmOn.value =PendingIntent.getBroadcast(getApplication(),REQUEST_CODE,notifyIntent,PendingIntent.FLAG_NO_CREATE) !=null
-        notifyPendingIntent = PendingIntent.getBroadcast(getApplication(),REQUEST_CODE,notifyIntent,PendingIntent.FLAG_UPDATE_CURRENT)
+        _alarmOn.value =PendingIntent.getBroadcast(getApplication(),REQUEST_CODE,notifyIntent,PendingIntent.FLAG_IMMUTABLE) !=null
+        notifyPendingIntent = PendingIntent.getBroadcast(getApplication(),REQUEST_CODE,notifyIntent,PendingIntent.FLAG_IMMUTABLE)
 
         //If alarm is not null, resume the timer back for this alarm
         if(_alarmOn.value!!){
